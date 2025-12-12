@@ -1,7 +1,16 @@
-services:
-   backend:
-     image: ./backend/
+version: "3.8"
 
-   frontend:
-      image: ./frontend/
-        
+services:
+  backend:
+    build: ./backend
+    container_name: flask-backend
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./frontend
+    container_name: nginx-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
