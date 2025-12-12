@@ -1,4 +1,7 @@
 FROM python:3.13.11-slim
-WORKDIR /main/backend
-RUN python app.py
+WORKDIR /main
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app.py .
 EXPOSE 5000
+CMD ["python", "app.py"] 
