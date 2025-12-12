@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps Frontend</title>
+</head>
+<body>
+    <h1>Frontend App</h1>
+
+    <h2 id="result">Loading...</h2>
+
+    <script>
+        fetch("http://localhost:5000/api/message")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("result").innerText = data.message;
+            })
+            .catch(err => {
+                document.getElementById("result").innerText =
+                    "Error connecting to backend";
+            });
+    </script>
+</body>
+</html>
