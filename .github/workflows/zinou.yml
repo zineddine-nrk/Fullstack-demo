@@ -2,14 +2,19 @@ name: Deploy to VM
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
-    runs-on: windows-latest
-
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-      - name: Build
-        uses: actions/checkout@v4
-        
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            cd fullstack-demo
+            git pull
+            docker-compose up --build -d
