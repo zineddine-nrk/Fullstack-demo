@@ -9,7 +9,8 @@
     <h2 id="result">Loading...</h2>
 
     <script>
-        fetch("http://localhost:5000/api/message")
+        fetch("http://backend:5000/api/message")
+
             .then(res => res.json())
             .then(data => {
                 document.getElementById("result").innerText = data.message;
