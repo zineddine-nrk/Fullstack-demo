@@ -8,7 +8,7 @@ def home():
 
 @app.route("/api/message")
 def message():
-    return jsonify({"message": "Hello DevOps - version 1.9 hhh"})
+    return jsonify({"message": "Hello DevOps - version 2.0S hhh"})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
