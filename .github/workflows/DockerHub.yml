@@ -32,4 +32,4 @@ jobs:
            sudo docker pull zineddinen/backend_image
            sudo docker stop backend || true
            sudo docker rm backend || true
-           sudo docker run -d -p 80:5000 --name backend ${{ secrets.DOCKERHUB_USERNAME }}/backend_image
+           sudo docker run -d -p 80:5000 --name backend zineddinen/backend_image
