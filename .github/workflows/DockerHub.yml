@@ -29,7 +29,7 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY_PRIVATE }}
           script: |
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/backend_image
+            docker pull zineddinen/backend_image
    #         docker stop backend || true
    #         docker rm backend || true
    #         docker run -d -p 80:5000 --name backend ${{ secrets.DOCKERHUB_USERNAME }}/backend_image
