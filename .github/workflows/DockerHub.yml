@@ -30,6 +30,6 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY_PRIVATE }}
           script: |
            sudo docker pull zineddinen/backend_image
-          # docker stop backend || true
-           # docker rm backend || true
-           # docker run -d -p 80:5000 --name backend ${{ secrets.DOCKERHUB_USERNAME }}/backend_image
+           sudo docker stop backend || true
+           sudo docker rm backend || true
+           sudo docker run -d -p 80:5000 --name backend ${{ secrets.DOCKERHUB_USERNAME }}/backend_image
