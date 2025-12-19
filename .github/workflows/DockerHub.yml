@@ -21,3 +21,15 @@ jobs:
 
       - name: Push
         run: docker push zineddinen/backend_image
+
+      - name: Deploy to VM over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY_PRIVATE }}
+          script: |
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/backend_image
+            docker stop flaskapp || true
+            docker rm flaskapp || true
+            docker run -d -p 80:5000 --name flaskapp ${{ secrets.DOCKERHUB_USERNAME }}/backend_image
