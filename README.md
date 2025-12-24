@@ -12,11 +12,37 @@ containerisation, automatisation CI/CD et déploiement cloud.
 - **AWS EC2** → Déploiement
 
 ---
-
-## 🧱 Architecture
-1️⃣ Code push → GitHub  
-2️⃣ GitHub Actions build l'image Docker  
-3️⃣ L'image est publiée  
-4️⃣ Déploiement automatique sur EC2  
-
+1️⃣ Développeur push le code sur GitHub
+2️⃣ GitHub Actions se déclenche automatiquement
+3️⃣ Build de l’image Docker
+4️⃣ Push de l’image vers Docker Hub
+5️⃣ Connexion à AWS EC2 via SSH
+6️⃣ Pull de l’image + déploiement automatique
 ---
+
+▶️ Déploiement Manuel (avant CI/CD)
+Installer Docker sur la VM
+
+Pull & Run (test manuel)
+
+docker pull zineddinen/backend_image
+docker run -d -p 80:5000 --name backend zineddinen/backend_image
+Accès :
+http://VM_PUBLIC_IP
+---
+
+🤖 CI/CD – GitHub Actions
+🔐 Secrets à configurer
+Dans : Settings → Secrets → Actions
+Ajouter :
+DOCKERHUB_USERNAME = Ton username DockerHub
+DOCKERHUB_TOKEN	= Access token DockerHub(Password)
+VM_HOST	IP = publique de la VM
+VM_USER	= ubuntu
+VM_SSH_KEY_PRIVATE = Clé privée SSH
+
+📌 Workflow utilisé
+📁 .github/workflows/main.yml
+✔️ Build
+✔️ Push
+✔️ Deploy + Restart auto
