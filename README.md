@@ -1,7 +1,7 @@
-# 🚀 DevOps Mini Project – Flask | Docker | CI/CD | AWS EC2
+# 🚀 DevOps Mini Project – Flask | Docker | CI/CD | AWS EC2 | Terraform
 
 Ce projet est une **petite application backend Flask** utilisée pour pratiquer des concepts DevOps :
-containerisation, automatisation CI/CD et déploiement cloud.
+containerisation, automatisation CI/CD , Terraform et déploiement cloud.
 
 ---
 
@@ -11,6 +11,10 @@ containerisation, automatisation CI/CD et déploiement cloud.
 - **GitHub Actions** → CI/CD (Build + Push Image + Deploy)
 - **AWS EC2** → Déploiement
 
+Infrastructure avec Terraform :
+Terraform provisionne automatiquement EC2, le Security Group et la KeyPair.
+Le state Terraform est stocké dans un backend S3 pour sécurité et collaboration.
+Le déploiement des containers Docker (backend + frontend) est automatisé via CI/CD GitHub Actions.
 ---
 1️⃣ Développeur push le code sur GitHub
 2️⃣ GitHub Actions se déclenche automatiquement
@@ -46,3 +50,4 @@ VM_SSH_KEY_PRIVATE = Clé privée SSH
 ✔️ Build
 ✔️ Push
 ✔️ Deploy + Restart auto
+
